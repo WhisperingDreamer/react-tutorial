@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './components/Header'
-import Image from './components/img'
-import logo from './img/logo.png'
+import Users from './components/Users'
+import AddUser from './components/AddUser'
 
 // ReactDOM.render(React.createElement('input', {
 //     placeholder: 'Help text',
@@ -13,32 +13,46 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      helpText: 'Help Text',
-      userDate: ''
+        users: [
+            {
+                id: 1,
+                firstname: 'Bob',
+                lastname: 'Marley',
+                bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, voluptas.',
+                age: 40,
+                isHappy: true
+            },
+            {
+                id: 2,
+                firstname: 'John',
+                lastname: 'Doe',
+                bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, voluptas.',
+                age: 22,
+                isHappy: false
+            }
+        ]
     }
-
-    this.inputClick = this.inputClick.bind(this)
+    this.addUser = this.addUser.bind(this)
   }
 
-  helpText = 'Help Text'
   render() {
-  return (<div className='name'>
-    <Header title='Шапка сайта' />
-    <h1>{this.state.helpText}</h1>
-    <h2>{this.state.userData}</h2>
-    <input placeholder={this.state.helpText}
-        onChange={event => this.setState({userData: event.target.value})}
-        onClick={this.inputClick} onMouseOver={this.mouseOver} />
-        <p>{this.state.helpText === 'Help Text' ? 'Yes' : 'No'}</p>
-        <Image image={logo} />
+  return (<div>
+      <Header title='Список пользователей' />
+      <main>
+        <Users users={this.state.users} />
+      </main>
+      <aside>
+        <AddUser onAdd={this.addUser} />
+      </aside>
     </div>)
   }
 
-  inputClick() {
-    this.setState({helpText: 'Changed'})
-    console.log('Clicked')
+  addUser(user) {
+    const id = this.state.users.length + 1
+    this.setState({ users: [...this.state.users, {id, ...user}]})
+    console.log(user.isHappy)
   }
-  mouseOver() {console.log('Mouse Over')}
+
 }
 
 export default App
