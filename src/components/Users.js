@@ -6,7 +6,7 @@ class Users extends React.Component {
         if(this.props.users.length > 0)
             return (<div>
                 {this.props.users.map((el) => (
-                    <User key={el.id} user={el}/>
+                    <User onDelete={this.props.onDelete} key={el.id} user={el}/>
                 ))}
             </div>)
         else
