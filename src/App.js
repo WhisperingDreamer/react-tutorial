@@ -2,6 +2,9 @@ import React from 'react'
 import Header from './components/Header'
 import Users from './components/Users'
 import AddUser from './components/AddUser'
+import axios from 'axios'
+
+const baseUrl = 'https://reqres.in/api/users?page=1'
 
 // ReactDOM.render(React.createElement('input', {
 //     placeholder: 'Help text',
@@ -12,6 +15,11 @@ import AddUser from './components/AddUser'
 class App extends React.Component {
   constructor(props) {
     super(props)
+
+    axios.get(baseUrl).then((res) => {
+      console.log(res.data.data)
+    })
+    
     this.state = {
         users: [
             {
