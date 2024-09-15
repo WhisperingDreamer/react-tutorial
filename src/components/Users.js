@@ -4,7 +4,7 @@ import User from './User'
 class Users extends React.Component {
     render() {
         if(this.props.users.length > 0)
-            return (<div>
+            return (<div className='Users'>
                 {this.props.users.map((el) => (
                     <User onEdit={this.props.onEdit} onDelete={this.props.onDelete} key={el.id} user={el}/>
                 ))}

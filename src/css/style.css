@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    color: aliceblue;
 }
 
 body {
@@ -20,7 +21,29 @@ body {
 main {
     margin: 50px 100px;
     width: 50%;
-    float: left
+    height: 600px;
+    float: left;
+}
+
+.Users {
+    overflow: auto;
+    height: 95%;
+    background-color: slategrey;
+    border: double 4px;
+    padding: 25px;
+}
+
+.Users::-webkit-scrollbar {
+    width: 0.7em;
+}
+
+.Users::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.Users::-webkit-scrollbar-thumb {
+    background-color: #3e8fa0;
+    outline: 0px solid #3e8fa0;
 }
 
 aside {
@@ -31,9 +54,13 @@ aside {
 }
 
 main .user {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     background-color: #3e8fa0;
     padding: 20px;
+}
+
+main .user>* {
+    margin-block: 7px;
 }
 
 main .delete-icon {
